@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Shop - คำสั่งซื้อ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f3e7;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      background-color: #3b5a2a; 
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .logo img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    .user-actions a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+    }
+    .nav {
+      background: #c0b48c;; 
+      padding: 8px 20px;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .menu-links {
+      display: flex;
+      gap: 20px;
+    }
+    .menu-links a {
+      text-decoration: none;
+      color: rgb(41, 40, 40);
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .menu-links a:hover {
+      background-color: #3b5a2a; 
+      color: #f8f3e7;
+    }
+    .menu-links a.active {
+      background-color: #6b8f4f; 
+      color: #f8f3e7;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 4px 8px;
+      border-radius: 15px;
+      margin-left: auto;
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 6px;
+      font-size: 14px;
+      width: 150px;
+      border-radius: 10px;
+    }
+    .search-box img {
+      width: 16px;
+      height: 16px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      width: 90%;
+      max-width: 960px;
+      box-sizing: border-box;
+    }
+    .order-container {
+      background: #b3a57d; 
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .order-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #3b5a2a; 
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .order-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background-color: white;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .order-item img {
+      width: 100px;
+      height: 100px;
+      border-radius: 6px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    .item-details {
+      flex-grow: 1;
+    }
+    .item-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .item-price {
+      font-size: 16px;
+      color: #3b5a2a; 
+      margin-bottom: 5px;
+    }
+    .item-options button {
+      background-color: #e0f2f7;
+      color: #03a9f4;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      margin-right: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .item-quantity {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .item-quantity span {
+      margin: 0 10px;
+      font-size: 16px;
+    }
+    .quantity-controls button {
+      background-color: #f0f0f0;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .order-summary {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .total-label {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .total-price {
+      font-size: 20px;
+      color: #3b5a2a; 
+      font-weight: bold;
+    }
+    .payment-options {
+      background-color: #3b5a2a;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .payment-options label {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .payment-options input[type="radio"] {
+      margin-right: 10px;
+    }
+    .checkout-button {
+      background-color: #6b8f4f; 
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+    .checkout-button:hover {
+      background-color: #3b5a2a; 
+    }
+
+    
+    .cart-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+      background-color: #3b5a2a; /* Background color for the cart icon */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cart-icon img {
+      width: 40px; /* Adjust the size of the icon image */
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .cart-icon:hover {
+      transform: scale(1.1); /* Zoom effect on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <span>☕ Coffee Shop</span>
+    </div>
+    <div class="user-actions">
+      <a href="#">login</a> | <a href="#">Sign in</a>
+      <img src="images/User icon.png" alt="User Icon" width="24" />
+    </div>
+  </div>
+  <div class="nav">
+    <div class="menu-links">
+      <a href="#">HOME</a>
+      <a href="#">MENU</a>
+      <a href="#">Track status</a>
+      <a href="#">ABOUT AS</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="ค้นหา" />
+      <img src="images/ค้นหา.jpg" alt="Search" />
+    </div>
+  </div>
+  <div class="container">
+    <div class="order-container">
+      <h1 class="order-title">คำสั่งซื้อ</h1>
+      <div class="order-item">
+        <img src="images/กาแฟ-ส้ม.jpg" alt="Orange Coffee">
+        <div class="item-details">
+          <h2 class="item-name">Orange-Coffee</h2>
+          <p class="item-price">75.00 บาท</p>
+          <div class="item-options">
+            <button disabled>Sweet : หวาน มาก</button>
+            <button disabled>Size : M</button>
+          </div>
+        </div>
+        <div class="quantity-controls">
+          <span>x1</span>
+        </div>
+      </div>
+
+      <div class="order-summary">
+        <div class="total-label">Total</div>
+        <div class="total-price">75.00 บาท</div>
+        <div>รับ แต้ม 2 แต้ม</div>
+      </div>
+
+      <div class="payment-options">
+        <label><input type="radio" name="payment" value="counter_cash"> หน้าเคาน์เตอร์ / เงินสด</label>
+        <label><input type="radio" name="payment" value="truemoney"> TrueMoney Wallet</label>
+        <label><input type="radio" name="payment" value="credit_card"> บัตรเครดิต</label>
+        <label><input type="radio" name="payment" value="linepay"> LINE Pay</label>
+        <label><input type="radio" name="payment" value="qrcode" checked> คิวอาร์โค้ด</label>
+      </div>
+      <button class="checkout-button">ไปชำระเงิน</button>
+    </div>
+  </div>
+
+  <!-- Cart Icon -->
+  <a href="#" class="cart-icon">
+    <img src="images/รถเข็น.jpeg" alt="Cart" />
+  </a>
+</body>
+</html>
