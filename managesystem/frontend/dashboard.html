@@ -1,80 +1,26 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบจัดการคาเฟ่</title>
-    <style>
-        nav {
-            background: #C0B48C ;
-            padding: 1rem;
-            color: rgb(255, 255, 255);
-        }
-        nav a {
-            color: rgb(0, 0, 0);
-            margin-right: 1rem;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .logo-container {
-            background-color: #6D8E63;
-            padding: 15px; 
-            display: flex;  /* จัดให้อยู่ในแนวนอน */
-            align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง #F4EBD0 */
-            color: white;
-        }
-        body {
-            background-color: #F4EBD0 ;
-          }
-        .container {
-            background-color: white;
-            padding: 12px 15px;
-            border-radius: 8px; /* ทำมุมโค้งมน รัศมี 8 พิกเซล */
-            max-width: 1200px; /* ความกว้างสูงสุดของคอนเทนเนอร์*/
-            margin: 10px auto; /* จัดกึ่งกลางหน้าจอ และมีระยะห่าง 20 พิกเซลจากด้านบนและล่าง*/
-        }
-    </style>
-    <div class="logo-container">
-        <img src="โลโก้.png" alt="Coffee Shop Logo">
-        <h1>Coffee Shop</h1> 
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<p>Welcome to the Cafe Management System</p>
+
+<div>
+    <h2>Quick Stats</h2>
+    <div>
+        <h3>Inventory Items</h3>
+        <p>{{ inventory_count }}</p>
     </div>
-</head>
-<body>
-        <nav>
-        <div style="display: flex; align-items: center;">
-            {% if current_user.is_authenticated %}
-                <div>
-                    <a href="{{ url_for('admin_dashboard') }}">หน้าหลัก</a>
-                    <a href="{{ url_for('inventory.view_inventory') }}">สต็อกสินค้า</a>
-                    <a href="{{ url_for('menu.view_menu') }}">จัดการเมนู</a>
-                    <a href="{{url_for('discounts.view_discounts')}}">จัดการส่วนลด</a>
-                    <a href="{{ url_for('promotions.view_promotions') }}">จัดโปรโมชัน</a>
-                    <a href="{{ url_for('members.view_members')}}">จัดการระบบสมาชิก</a>
-                    <a href="{{ url_for('users.view_profile')}}">จัดการบัญชีผู้ใช้</a>
-                    <a href="{{ url_for('sales.view_sales')}}">ยอดขาย</a>
-                </div>
-                <div style="margin-left: auto;">
-                    <a href="{{ url_for('auth_admin.logout') }}">ออกจากระบบ</a>
-                </div>
-            {% else %}
-                <a href="{{ url_for('auth_admin.login') }}">เข้าสู่ระบบ</a>
-            {% endif %}
-        </div>
-        </nav>
-
-
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-
-        {% block content %}{% endblock %}
+    <div>
+        <h3>Menu Items</h3>
+        <p>{{ menu_count }}</p>
     </div>
-</body>
-</html> 
+    <div>
+        <h3>Active Members</h3>
+        <p>{{ member_count }}</p>
+    </div>
+    <div>
+        <h3>Today's Sales</h3>
+        <p>{{ today_sales }}</p>
+    </div>
+</div>
+{% endblock %}
