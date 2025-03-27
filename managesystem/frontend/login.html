@@ -1,16 +1,102 @@
+<style>
+    /* กรอบ login */
+    .login-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .login-title {
+        color: #5f7445;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .login-subtitle {
+        color: #8b9777;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    /* กล่อง login */
+    .login-card {
+        background-color: #6D8E63;
+        padding: 30px 40px 30px 30px;
+        width: 400px;
+        margin: auto;
+        border-radius: 20px;
+    }
+
+    .form-group {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        color: white;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .forgot-password {
+        text-align: right;
+        margin-bottom: 15px;
+    }
+
+    .forgot-password a {
+        color: #d3c1a5;
+        text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+
+    /* ปุ่ม login */
+    .login-button {
+        width: 100%;
+        background-color: #F4EBD0;
+        border: none;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #5f7445;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .login-button:hover {
+        background-color: #c4ae8d;
+    }
+</style>
+
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Login</h1>
-<form method="POST" action="{{ url_for('auth_admin.login') }}">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+<div class="login-container">
+    <h1 class="login-title">Login</h1>
+    <p class="login-subtitle">Coffee Shop</p>
+    <div class="login-card">
+        <form method="POST" action="{{ url_for('auth_admin.login') }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="forgot-password">
+                <a href="#">Forget Password ?</a>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+        </form>
     </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Login</button>
-</form>
+</div>
 {% endblock %}
