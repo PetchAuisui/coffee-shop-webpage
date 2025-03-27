@@ -200,22 +200,22 @@
   <div class="header">
     <div class="logo">☕ Coffee Shop</div>
     <div class="user-actions">
-      <a href="login.html">Login</a> | <a href="signin.html">Sign in</a>
-      <img src="images/User icon.png" alt="user" />
+      <a href="/login">Login</a> | <a href="/register">Sign in</a>
+      <img src="{{ url_for('static', filename='images/User icon.png') }}" alt="user" />
     </div>
   </div>
 
   <div class="nav">
     <div class="menu-links">
-      <a href="#">HOME</a>
-      <a href="#">MENU</a>
-      <a href="#">Track Status</a>
-      <a href="#">ABOUT US</a>
-      <a href="#">FAQ</a>
+      <a href="/">HOME</a>
+      <a href="/menu">MENU</a>
+      <a href="/track-status">Track Status</a>
+      <a href="about-us.html">ABOUT US</a>
+      <a href="faq.html">FAQ</a>
     </div>
     <div class="search-box">
       <input type="text" placeholder="ค้นหา" />
-      <img src="images/ค้นหา.jpg" alt="search" />
+      <img src="{{ url_for('static', filename='images/ค้นหา.jpg') }}" alt="search" />
     </div>
   </div>
 
@@ -235,15 +235,15 @@
       <h2 id="coffee">Coffee</h2>
       <div class="product-list">
         <div class="product-item">
-          <img src="images/มอคค่า.jpg" alt="Mocha">
+          <img src="{{ url_for('static', filename='images/มอคค่า.jpg') }}" alt="Mocha">
           <div class="label">Mocha</div>
         </div>
         <div class="product-item">
-          <img src="images/กาแฟ-ส้ม.jpg" alt="Orange Coffee">
+          <img src="{{ url_for('static', filename='images/กาแฟ-ส้ม.jpg') }}" alt="Orange Coffee">
           <div class="label">Orange Coffee</div>
         </div>
         <div class="product-item">
-          <img src="images/อมเริกาโน่.jpg" alt="Americano">
+          <img src="{{ url_for('static', filename='images/อมเริกาโน่.jpg') }}" alt="Americano">
           <div class="label">Americano</div>
         </div>
       </div>
@@ -251,15 +251,15 @@
       <h2 id="cake">Cake</h2>
       <div class="product-list">
         <div class="product-item">
-          <img src="images/ เค้กสตอเบอร์รี่.jpg" alt="Strawberry Cake">
+          <img src="{{ url_for('static', filename='images/เค้กสตอเบอร์รี่.jpg') }}" alt="Strawberry Cake">
           <div class="label">Strawberry Cake</div>
         </div>
         <div class="product-item">
-          <img src="images/เค้กส้ม .jpg" alt="Orange Cake">
+          <img src="{{ url_for('static', filename='images/เค้กส้ม.jpg') }}" alt="Orange Cake">
           <div class="label">Orange Cake</div>
         </div>
         <div class="product-item">
-          <img src="images/เค้กช็อกโกแลต.jpg" alt="Chocolate Cake">
+          <img src="{{ url_for('static', filename='images/เค้กช็อกโกแลต.jpg') }}" alt="Chocolate Cake">
           <div class="label">Chocolate Cake</div>
         </div>
       </div>
@@ -267,22 +267,24 @@
       <h2 id="tea">Tea</h2>
       <div class="product-list">
         <div class="product-item">
-          <img src="images/ชาไทย.jpg" alt="ชาไทย">
+          <img src="{{ url_for('static', filename='images/ชาไทย.jpg') }}" alt="ชาไทย">
           <div class="label">ชาไทย</div>
         </div>
         <div class="product-item">
-          <img src="images/ชาเขียว.jpg" alt="ชาเขียว">
+          <img src="{{ url_for('static', filename='images/ชาเขียว.jpg') }}" alt="ชาเขียว">
           <div class="label">ชาเขียว</div>
         </div>
         <div class="product-item">
-          <img src="images/ชามะนาว.jpg" alt="ชามะนาว">
+          <img src="{{ url_for('static', filename='images/ชามะนาว.jpg') }}" alt="ชามะนาว">
           <div class="label">ชามะนาว</div>
         </div>
       </div>
     </div>
   </div>
 
-  <img src="images/รถเข็น.jpeg" alt="cart" class="cart-icon" />
+  <a href="/cart">  
+    <img src="{{ url_for('static', filename='images/รถเข็น.jpeg') }}" alt="cart" class="cart-icon" />
+</a>
 
 </body>
 </html>

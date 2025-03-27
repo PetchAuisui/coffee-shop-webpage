@@ -192,23 +192,23 @@
   <div class="header">
     <div class="logo">☕ Coffee Shop</div>
     <div class="user-actions">
-      <a href="#">Login</a> | <a href="#">Sign In</a>
-      <img src="images/User icon.png" alt="User Icon" />
+      <a href="/login">Login</a> | <a href="/register">Sign in</a>
+      <img src="{{ url_for('static', filename='images/User icon.png') }}" alt="User Icon" />
     </div>
   </div>
 
   <!-- Navigation -->
   <div class="nav">
     <div class="menu-links">
-      <a href="#">HOME</a>
-      <a href="#">MENU</a>
-      <a href="#" class="active">Track Status</a>
-      <a href="#">ABOUT US</a>
-      <a href="#">FAQ</a>
+      <a href="/">HOME</a>
+      <a href="/menu">MENU</a>
+      <a href="/track-status" class="active">Track Status</a>
+      <a href="/about-us">ABOUT US</a>
+      <a href="/faq">FAQ</a>
     </div>
     <div class="search-box">
       <input type="text" placeholder="ค้นหา" />
-      <img src="images/ค้นหา.jpg" alt="Search" />
+      <img src="{{ url_for('static', filename='images/ค้นหา.jpg') }}" alt="Search" />
     </div>
   </div>
 
@@ -219,7 +219,7 @@
       <p class="order-id">คำสั่งซื้อ #0000002</p>
 
       <div class="order-item-container">
-        <img src="images/กาแฟ-ส้ม.jpg" alt="Orange Coffee" class="order-item-image" />
+        <img src="{{ url_for('static', filename='images/กาแฟ-ส้ม.jpg') }}" alt="Orange Coffee" class="order-item-image" />
         <div class="order-item-details">
           <h2 class="item-name">Orange - Coffee</h2>
           <p class="item-price">45 บาท</p>

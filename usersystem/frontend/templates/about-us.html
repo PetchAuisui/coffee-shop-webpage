@@ -128,16 +128,19 @@
         <div class="logo">☕ Coffee Shop</div>
         <nav>
             <ul>
-                <li><a href="index.html">HOME</a></li>  <!-- ลิงก์ไปยังหน้า HOME -->
-                <li><a href="menu.html">MENU</a></li>  <!-- ลิงก์ไปยังหน้า MENU -->
-                <li><a href="track_status.html">Track status</a></li>  <!-- ลิงก์ไปยังหน้า Track Status -->
-                <li><a href="about-us.html" class="active">ABOUT US</a></li>  <!-- ลิงก์ไปยังหน้า ABOUT US -->
-                <li><a href="faq.html">FAQ</a></li>  <!-- ลิงก์ไปยังหน้า FAQ -->
+                <li><a href="/">HOME</a></li>  <!-- ลิงก์ไปยังหน้า HOME -->
+                <li><a href="/menu">MENU</a></li>  <!-- ลิงก์ไปยังหน้า MENU -->
+                <li><a href="/track-status">Track status</a></li>  <!-- ลิงก์ไปยังหน้า Track Status -->
+                <li><a href="/about-us" class="active">ABOUT US</a></li>  <!-- ลิงก์ไปยังหน้า ABOUT US -->
+                <li><a href="/faq">FAQ</a></li>  <!-- ลิงก์ไปยังหน้า FAQ -->
             </ul>
         </nav>
         <div class="account">
-            <img src="Image/account2.webp" alt="Account">
+            <a href="/myaccount"> <!-- ลิงก์ที่ไปที่หน้าโปรไฟล์ -->
+                <img src="{{ url_for('static', filename='images/User icon.png') }}" alt="User Icon" />
+            </a>
         </div>
+        
     </header>
     <main>
         <section class="store-info">

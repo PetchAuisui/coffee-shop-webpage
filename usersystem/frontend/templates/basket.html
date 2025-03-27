@@ -232,28 +232,28 @@
       <span>☕ Coffee Shop</span>
     </div>
     <div class="user-actions">
-      <a href="#">login</a> | <a href="#">Sign in</a>
-      <img src="images/User icon.png" alt="User Icon" width="24" />
+      <a href="/login">Login</a> | <a href="/register">Sign in</a>
+      <img src="{{ url_for('static', filename='images/User icon.png') }}" alt="User Icon" width="24" />
     </div>
   </div>
   <div class="nav">
     <div class="menu-links">
-      <a href="#">HOME</a>
-      <a href="#">MENU</a>
-      <a href="#">Track status</a>
-      <a href="#">ABOUT AS</a>
-      <a href="#">FAQ</a>
+      <a href="/">HOME</a>
+      <a href="/menu">MENU</a>
+      <a href="/track-status">Track status</a>
+      <a href="/about-us">ABOUT AS</a>
+      <a href="/faq">FAQ</a>
     </div>
     <div class="search-box">
       <input type="text" placeholder="ค้นหา" />
-      <img src="images/ค้นหา.jpg" alt="Search" />
+      <img src="{{ url_for('static', filename='images/ค้นหา.jpg') }}" alt="Search" />
     </div>
   </div>
   <div class="container">
     <div class="order-container">
       <h1 class="order-title">ตะกร้าสินค้า</h1>
       <div class="order-item">
-        <img src="images/กาแฟ-ส้ม.jpg" alt="Orange Coffee">
+        <img src="{{ url_for('static', filename='images/กาแฟ-ส้ม.jpg') }}" alt="Orange Coffee">
         <div class="item-details">
           <h2 class="item-name">Orange-Coffee</h2>
           <p class="item-price">75.00 บาท</p>
