@@ -1,14 +1,14 @@
 import sqlite3
 from sqlite3 import Error
+import os
 
-def create_connection():
-    conn = None
-    try:
-        conn = sqlite3.connect('cafe.db')
-        return conn
-    except Error as e:
-        print(e)
+# ฟังก์ชันการเชื่อมต่อฐานข้อมูล
+def create_connection(db_file='cafe.db'):
+    """ สร้างการเชื่อมต่อฐานข้อมูล """
+    db_path = os.path.join(os.path.dirname(__file__), '../../cafe.db')  # ใช้เส้นทางสัมพัทธ์
+    conn = sqlite3.connect(db_path)  # เชื่อมต่อกับฐานข้อมูลตามเส้นทางที่ได้
     return conn
+
 
 def initialize_database():
     conn = create_connection()

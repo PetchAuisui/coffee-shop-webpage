@@ -5,7 +5,10 @@
 <ul class="list-group">
     {% for item in items %}
     <li class="list-group-item">
-        <p>{{ item[1] }} - ${{ item[3] }}</p>
+        <h3>{{ item[1] }}</h3>
+        <p>ประเภท:{{ item[4] }}</p>
+        <p>{{ item[2] }}</p>
+        <h4>${{ item[3] }}</h4>
         <form action="{{ url_for('add_to_cart_route', item_id=item[0]) }}" method="POST">
             <button type="submit" class="btn btn-success">Add to Cart</button>
         </form>
