@@ -1,16 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
+<h2 class="text-center" style="font-size: 3rem; color: #6D8E63;">Login</h2>
+<form method="POST" class="login-form">
     <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" class="form-control" id="username" name="username" required><br>
+        <label for="username" style="font-size: 1.2rem; color: #6D8E63;">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required style="border-radius: 20px; padding: 10px; border: 2px solid #6D8E63;">
     </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" id="password" name="password" required><br>
+    <div class="form-group mt-3">
+        <label for="password" style="font-size: 1.2rem; color: #6D8E63;">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required style="border-radius: 20px; padding: 10px; border: 2px solid #6D8E63;">
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary mt-3" style="border-radius: 20px; background-color: #6D8E63; color: white; padding: 10px 20px; border: none; font-size: 1.2rem; width: 100%;">Login</button>
 </form>
+
 {% endblock %}
+
+<style>
+    /* Custom Styling for Login Form */
+    .login-form {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: #6D8E63;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .form-control {
+        border-radius: 20px;
+        padding: 10px;
+        border: 2px solid #6D8E63; /* Green border around input fields */
+    }
+
+    .btn-primary {
+        background-color: #6D8E63;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #A0C0A1;
+    }
+
+    h2 {
+        color: #6D8E63;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    /* Input field focus effect */
+    .form-control:focus {
+        border-color: #A0C0A1; /* Change border color to lighter green when focused */
+        box-shadow: 0 0 5px rgba(160, 192, 161, 0.5); /* Add shadow to input field on focus */
+    }
+</style>

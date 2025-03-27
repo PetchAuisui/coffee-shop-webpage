@@ -3,44 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Example</title>
+    <title>หน้าร้าน</title>
     <!-- เพิ่ม CSS ตามต้องการ -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        /* Custom CSS Styles for Navbar */
-        .navbar {
-            background-color: #3e8e41; /* Dark green background for navbar */
+        /* Custom CSS Styles for Navbar and Body */
+        :root {
+            --navbar-bg-color: #6D8E63; /* Default Dark Green */
+            --navbar-text-color: #FFFFFF; /* White text */
+            --navbar-hover-color: #A0C0A1; /* Slight gray for hover */
+            --search-border-color: #6D8E63; /* Border color for search */
+            --notification-icon-color: #6D8E63; /* Color for notification icon */
         }
+
+        body {
+            background-color: #F4EBD0; /* Set background color of the page */
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: var(--navbar-bg-color) !important; /* Using CSS variable for background color */
+        }
+
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #fff;
+            color: var(--navbar-text-color) !important; /* Ensure text color is white */
         }
+
         .navbar-nav .nav-link {
-            color: #f8f9fa; /* White text for links */
+            color: var(--navbar-text-color) !important; /* White text for links */
             font-size: 1.1rem;
         }
+
         .navbar-nav .nav-link:hover {
-            color: #d4d4d4; /* Slight gray hover effect */
+            color: var(--navbar-hover-color) !important; /* Slight gray hover effect */
         }
+
         .navbar-nav .nav-item.active .nav-link {
             font-weight: bold; /* Highlight active menu item */
         }
+
         .navbar-toggler-icon {
-            background-color: #f8f9fa; /* White hamburger icon */
+            background-color: var(--navbar-bg-color) !important; /* White hamburger icon */
         }
+
         .navbar .navbar-collapse {
-            justify-content: flex-end; /* Align menu to the right */
+            justify-content: flex-start; /* Align menu to the left */
         }
+
         .search-bar {
             border-radius: 20px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--search-border-color) !important; /* Border color for search */
             padding: 5px 15px;
             width: 200px;
         }
+
         .notification-icon {
-            color: #f8f9fa;
+            color: var(--notification-icon-color) !important; /* Notification icon color */
         }
+
         /* Additional Styling for Responsive Design */
         @media (max-width: 768px) {
             .navbar-nav {
@@ -54,12 +77,13 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('home') }}">Coffee Shop</a>
+        <a class="navbar-brand" href="{{ url_for('home') }}">☕Coffee Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <!-- Menu aligned to left -->
+            <ul class="navbar-nav"> <!-- Menu stays on the left -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                 </li>
@@ -72,9 +96,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('inventory') }}">List of Ingredients</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
             </ul>
-            <!-- Search and Notifications -->
-            <div class="d-flex">
+            <!-- Search and Notifications aligned to right -->
+            <div class="d-flex ml-auto">
                 <input type="search" class="form-control search-bar" placeholder="Search...">
                 <span class="notification-icon ms-3">
                     <i class="bi bi-bell"></i> <!-- Bell icon for notifications -->
@@ -91,8 +118,4 @@
 </div>
 
 <!-- Scripts (Optional) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+<script src="https://code.jquery.com/jquery-3.6.

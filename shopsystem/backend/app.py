@@ -102,5 +102,13 @@ def inventory():
     return render_template('inventory.html')
 
 
+# Logout route
+@app.route('/logout')
+@login_required
+def logout():
+    session.pop('user_id', None)  # Remove the 'user_id' from session
+    return redirect(url_for('login'))  # Redirect to login page
+
+
 if __name__ == '__main__':
     app.run(debug=True , port=8000)
