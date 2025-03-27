@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F3E7;
+        }
+        .header {
+            background-color: #5A6E3A;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-actions img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .nav {
+            background-color: #C0B48C;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 15px;
+        }
+        .nav a:hover {
+            background-color: #B3A57D;
+            border-radius: 5px;
+        }
+        .menu-links {
+            display: flex;
+            gap: 15px;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 5px;
+            border-radius: 15px;
+            width: 250px;
+            margin-left: auto;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+        }
+        .search-box img {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .banner {
+            width: 100%;
+            height: 300px;
+            background: url('images/Home.jpg') no-repeat center center/cover;
+        }
+        .discount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .discount img {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .menu-section {
+            text-align: center;
+            padding: 20px;
+        }
+        .menu-button {
+            background-color: white;
+            border: 2px solid #5A6E3A;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .menu-item {
+            text-align: center;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item img {
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .menu-item p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #F8F3E7;
+            border-radius: 5px;
+        }
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            ☕ Coffee Shop
+        </div>
+        <div class="user-actions">
+            <a href="login.html">Login</a> | <a href="signin.html">Sign in</a>
+            <img src="images/User icon.png" alt="user">
+        </div>
+    </div>
+    
+    <div class="nav">
+        <div class="menu-links">
+            <a href="#">HOME</a>
+            <a href="#">MENU</a>
+            <a href="#">Track Status</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">FAQ</a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="ค้นหา">
+            <img src="images/ค้นหา.jpg" alt="search">
+        </div>
+    </div>
+
+    <div class="banner"></div>
+
+    <div class="discount">
+        <img src="images/ส่วนลด.png" alt="ส่วนลด">
+    </div>
+
+    <div class="menu-section">
+        <button class="menu-button">เมนูแนะนำ</button>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="images/ชาไทย.jpg" alt="ชาไทย">
+                <p>ชาไทย</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/มอคค่า.jpg" alt="มอคค่า">
+                <p>มอคค่า</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/กาแฟ-ส้ม.jpg" alt="กาแฟ-ส้ม">
+                <p>กาแฟ-ส้ม</p>
+            </div>
+        </div>
+    </div>
+
+    <img src="images/รถเข็น.jpeg" alt="cart" class="cart-icon">
+</body>
+</html>

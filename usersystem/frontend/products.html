@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Shop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f3e7;
+      color: #333;
+    }
+    .header {
+      background-color: #5a6e3a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .user-actions a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: normal;
+    }
+    .nav {
+      background: #c7b58b;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .menu-links a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .menu-links a:hover, .menu-links a.active {
+      background-color: #5a6e3a;
+      color: white;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-left: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 8px;
+      font-size: 16px;
+      width: 180px;
+      border-radius: 15px;
+    }
+    .search-box img {
+      width: 18px;
+      height: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+    }
+    /* Update the sidebar styling */
+    .sidebar {
+      width: 220px;
+      background-color: #e2d9c1;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .sidebar h3 {
+      color: #5a6e3a;
+      margin-bottom: 15px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      margin: 12px 0;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px;
+      border-radius: 6px;
+      display: block;
+      transition: background-color 0.3s;
+    }
+    .sidebar a.active, .sidebar a:hover {
+      background-color: #5a6e3a;
+      color: white;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+    .product-container {
+      text-align: center;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .product-container img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      height: 250px;
+    }
+    .options button, .quantity button, .add-btn {
+      padding: 8px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .options button:hover, .add-btn:hover {
+      background-color: #5a6e3a;
+      color: white;
+    }
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #5a6e3a;
+      margin-top: 15px;
+    }
+    .quantity input {
+      width: 40px;
+      text-align: center;
+      padding: 5px;
+      margin: 0 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .cart-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #5a6e3a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <span>☕️ Coffee Shop</span>
+    </div>
+    <div class="user-actions">
+      <a href="login.html">Login</a> | <a href="signin.html">Sign in</a>
+      <img src="images/User icon.png" alt="User Icon" width="30" />
+    </div>
+  </div>
+  <div class="nav">
+    <div class="menu-links">
+      <a href="#">HOME</a>
+      <a href="#" class="active">MENU</a>
+      <a href="#">Track Status</a>
+      <a href="#">ABOUT US</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="ค้นหา" />
+      <img src="images/ค้นหา.jpg" alt="Search" />
+    </div>
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <h3>MENU</h3>
+      <ul>
+        <li><a href="#" class="active">All Menu</a></li>
+        <li><a href="#">Coffee</a></li>
+        <li><a href="#">Tea</a></li>
+        <li><a href="#">Fresh Milk | Chocolate</a></li>
+        <li><a href="#">Cake</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="product-container">
+        <img src="images/กาแฟ-ส้ม.jpg" alt="Orange Coffee">
+        <h2>Orange-Coffee</h2>
+        <div class="options">
+          <button>ไม่หวาน</button>
+          <button>หวานน้อย</button>
+          <button>หวานปกติ</button>
+          <button>หวานมาก</button>
+        </div>
+        <div class="options">
+          <button>XL</button>
+          <button>L</button>
+          <button>S</button>
+          <button>M</button>
+        </div>
+        <input type="text" placeholder="Other | Add" style="width: 100%; padding: 5px; margin-top: 10px;">
+        <div class="price">75 บาท</div>
+        <div class="quantity">
+          <button>-</button>
+          <input type="text" value="1">
+          <button>+</button>
+        </div>
+        <button class="add-btn">Add</button>
+      </div>
+    </div>
+  </div>
+  <img src="images/รถเข็น.jpeg" alt="cart" class="cart-icon" />
+</body>
+</html>
