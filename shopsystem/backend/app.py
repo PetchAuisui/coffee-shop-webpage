@@ -4,9 +4,17 @@ from utils import get_user_by_username, get_all_menu_items, add_to_cart, get_car
 app = Flask(__name__, template_folder='../frontend/templates')
 app.secret_key = 'your_secret_key'
 
+# Check if the user is logged in (a helper function)
+def login_required(f):
+    def wrapper(*args, **kwargs):
+        if 'user_id' not in session:
+            return redirect(url_for('login'))  # Redirect to login if not logged in
+        return f(*args, **kwargs)
+    wrapper.__name__ = f.__name__
+    return wrapper
+
 
 @app.route('/')
-
 def index():
     return redirect(url_for('login'))
 
@@ -27,25 +35,28 @@ def login():
     return render_template('login.html')
 
 
-
 @app.route('/home')
+@login_required
 def home():
     return render_template('home.html')
 
 
 @app.route('/menu')
+@login_required
 def menu():
     items = get_all_menu_items()
     return render_template('menu.html', items=items)
 
 
 @app.route('/add_to_cart/<item_id>', methods=['POST'])
+@login_required
 def add_to_cart_route(item_id):
     add_to_cart(item_id)
     return redirect(url_for('menu'))  # Redirect back to the menu page after adding an item to the cart
 
 
 @app.route('/remove_from_cart/<item_id>', methods=['POST'])
+@login_required
 def remove_from_cart_route(item_id):
     # Call the function to remove the item from the cart
     remove_from_cart(item_id)
@@ -55,6 +66,7 @@ def remove_from_cart_route(item_id):
 
 
 @app.route('/cart', methods=['GET', 'POST'])
+@login_required
 def cart():
     if request.method == 'POST':
         item_id_to_remove = request.form['remove_item']
@@ -67,6 +79,7 @@ def cart():
 
 
 @app.route('/checkout', methods=['GET', 'POST'])
+@login_required
 def checkout_page():
     if request.method == 'POST':
         payment_method = request.form['payment_method']  # Get payment method from form
@@ -77,15 +90,17 @@ def checkout_page():
 
 
 @app.route('/sales_history')
+@login_required
 def sales_history():
     sales = get_sales_history()
     return render_template('sales_history.html', sales=sales)
 
 
 @app.route('/inventory')
+@login_required
 def inventory():
     return render_template('inventory.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , port=8000)

@@ -6,13 +6,55 @@
     <title>Navbar Example</title>
     <!-- เพิ่ม CSS ตามต้องการ -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS Styles for Navbar */
+        .navbar {
+            background-color: #3e8e41; /* Dark green background for navbar */
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .navbar-nav .nav-link {
+            color: #f8f9fa; /* White text for links */
+            font-size: 1.1rem;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #d4d4d4; /* Slight gray hover effect */
+        }
+        .navbar-nav .nav-item.active .nav-link {
+            font-weight: bold; /* Highlight active menu item */
+        }
+        .navbar-toggler-icon {
+            background-color: #f8f9fa; /* White hamburger icon */
+        }
+        .navbar .navbar-collapse {
+            justify-content: flex-end; /* Align menu to the right */
+        }
+        .search-bar {
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            padding: 5px 15px;
+            width: 200px;
+        }
+        .notification-icon {
+            color: #f8f9fa;
+        }
+        /* Additional Styling for Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('home') }}">Brand</a>
+        <a class="navbar-brand" href="{{ url_for('home') }}">Coffee Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,9 +67,19 @@
                     <a class="nav-link" href="{{ url_for('sales_history') }}">Order History</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('menu') }}">Menu</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('inventory') }}">List of Ingredients</a>
                 </li>
             </ul>
+            <!-- Search and Notifications -->
+            <div class="d-flex">
+                <input type="search" class="form-control search-bar" placeholder="Search...">
+                <span class="notification-icon ms-3">
+                    <i class="bi bi-bell"></i> <!-- Bell icon for notifications -->
+                </span>
+            </div>
         </div>
     </div>
 </nav>
