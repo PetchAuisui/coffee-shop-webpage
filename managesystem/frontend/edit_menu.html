@@ -3,32 +3,46 @@
 {% block content %}
 <div class="menu-form-container">
     <h1 class="inventory-form-title">{% if item %}Edit{% else %}Add{% endif %} Menu Item</h1>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="{{ item[1] if item else '' }}" required>
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea id="description" name="description">{{ item[2] if item else '' }}</textarea>
+            <input type="text" id="description" name="description" value="{{ item[2] if item else '' }}">
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
-            <input type="number" step="0.01" id="price" name="price" value="{{ item[3] if item else '' }}" required>
+            <input type="number" id="price" name="price" value="{{ item[3] if item else '' }}" required>
         </div>
         <div class="form-group">
             <label for="category">Category:</label>
             <input type="text" id="category" name="category" value="{{ item[4] if item else '' }}">
         </div>
+    
+        <!-- File upload input -->
         <div class="form-group">
-            <label for="is_available">Available:</label>
-            <input type="checkbox" id="is_available" name="is_available" {% if item and item[5] %}checked{% endif %}>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image">
+            {% if item[6] %}
+            <img src="{{ url_for('static', filename='images/' + item[6] | string) }}" class="menu-image" alt="Image for {{ item[1] }}">
+        {% else %}
+            No Image
+        {% endif %}
         </div>
-        <button type="submit">{% if item %}Update{% else %}Add{% endif %} Item</button>
+    
+        <!-- Active checkbox -->
+        <div class="form-group">
+            <label for="is_available">Available:</label> 
+            <input type="checkbox" id="is_available" name="is_available" {% if item and item[6] %}checked{% endif %}>
+        </div>
+    
+        <button type="submit">{% if item %}Update{% else %}Add{% endif %} Menu Item</button>
     </form>
+
+
 </div>
-
-
 {% block styles %}
 <style>
     .menu-form-container {
@@ -81,9 +95,9 @@
         transition: background-color 0.3s ease;
     }
 
-
     button:hover {
         background-color: #27ae60;
     }
 </style>
-{% endblock %}{% endblock %}
+{% endblock %}
+{% endblock %}

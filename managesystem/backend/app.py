@@ -10,7 +10,7 @@ from backend.auth_utils import admin_login_required
 from backend.database import create_connection
 
 
-app = Flask(__name__, template_folder='../frontend')
+app = Flask(__name__, static_folder='../../static',template_folder='../frontend')
 app.secret_key = os.urandom(24)  # ใช้ค่า secret_key ที่ปลอดภัย
 
 # ตั้งค่า Flask-Login

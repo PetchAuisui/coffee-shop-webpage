@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block content %}
 <style>
     .button {
@@ -53,6 +54,10 @@
     .action-links a:hover {
         opacity: 0.8;
     }
+    .menu-image {
+        width: 100px;
+        height: auto;
+    }
 </style>
 
 <div class="container">
@@ -68,6 +73,7 @@
                 <th>Price</th>
                 <th>Category</th>
                 <th>Available</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -80,6 +86,18 @@
                 <td>{{ item[3] }}</td>
                 <td>{{ item[4] }}</td>
                 <td>{{ '✅Yes' if item[5] else '❌No' }}</td>
+                
+                <!-- Display Image -->
+                <td>
+                    {% if item[6] %}
+                        <img src="{{ url_for('static', filename='images/' + item[6] | string) }}" class="menu-image" alt="Image for {{ item[1] }}">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+                
+                
+                <!-- Actions -->
                 <td class="action-links">
                     <a href="{{ url_for('menu.edit_menu_item', item_id=item[0]) }}">Edit</a>
                     <a href="{{ url_for('menu.delete_menu_item', item_id=item[0]) }}" onclick="return confirm('Are you sure?')">Delete</a>

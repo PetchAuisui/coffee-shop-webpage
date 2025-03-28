@@ -1,8 +1,11 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 from utils import get_user_by_username, get_all_menu_items, add_to_cart, get_cart, get_sales_history, remove_from_cart, checkout, calculate_cart_total
 
-app = Flask(__name__, template_folder='../frontend/templates')
-app.secret_key = 'your_secret_key'
+app = Flask(__name__, static_folder='../../static', template_folder='../frontend/templates')
+
+# Set a secret key for session management
+app.secret_key = os.urandom(24)  # Generates a random 24-byte secret key
 
 # Check if the user is logged in (a helper function)
 def login_required(f):
