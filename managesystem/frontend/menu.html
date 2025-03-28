@@ -79,7 +79,7 @@
                 <td>{{ item[2] }}</td>
                 <td>{{ item[3] }}</td>
                 <td>{{ item[4] }}</td>
-                <td>{{ 'Yes' if item[5] else 'No' }}</td>
+                <td>{{ '✅Yes' if item[5] else '❌No' }}</td>
                 <td class="action-links">
                     <a href="{{ url_for('menu.edit_menu_item', item_id=item[0]) }}">Edit</a>
                     <a href="{{ url_for('menu.delete_menu_item', item_id=item[0]) }}" onclick="return confirm('Are you sure?')">Delete</a>

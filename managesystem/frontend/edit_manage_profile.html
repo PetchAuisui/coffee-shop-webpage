@@ -17,8 +17,16 @@
             <input type="text" id="role" name="role" value="{{ user[3] if user else '' }}" required>
         </div>
         <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ user[4] if user else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="phone" id="phone" name="phone" value="{{ user[5] if user else '' }}" required>
+        </div>
+        <div class="form-group">
             <label for="is_active">Active:</label>
-            <input type="checkbox" id="is_active" name="is_active" {% if user and user[4] %}checked{% endif %}>
+            <input type="checkbox" id="is_active" name="is_active" {% if user and user[6] %}checked{% endif %}>
         </div>
         <button type="submit">{% if user %}Update{% else %}Add{% endif %} Member</button>
     </form>

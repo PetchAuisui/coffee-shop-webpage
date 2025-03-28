@@ -55,7 +55,35 @@ app.register_blueprint(users_bp)
 @app.route('/admin')
 @admin_login_required
 def admin_dashboard():
-    return render_template('dashboard.html')
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    # Fetch Inventory Items
+    cursor.execute("SELECT COUNT(*) FROM inventory")
+    inventory_count = cursor.fetchone()[0]
+
+    # Fetch Menu Items
+    cursor.execute("SELECT COUNT(*) FROM menu_items WHERE is_available = 1")
+    menu_count = cursor.fetchone()[0]
+
+    # Fetch Active Members
+    cursor.execute("SELECT COUNT(*) FROM members WHERE is_active = 'active'")  # Assuming you have a status column to check active members
+    member_count = cursor.fetchone()[0]
+
+    # Fetch Today's Sales (total_amount for today's date)
+    cursor.execute("SELECT * FROM sales")
+
+    sales = cursor.fetchall()
+
+    total_sales = sum(sale[2] for sale in sales)
+    conn.close()
+
+    # Pass the fetched data to the template
+    return render_template('dashboard.html', inventory_count=inventory_count,
+                           menu_count=menu_count, member_count=member_count, 
+                           total_sales=total_sales)
+
+
 
 @app.route('/')
 def home():

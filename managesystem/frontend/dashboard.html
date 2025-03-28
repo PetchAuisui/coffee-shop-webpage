@@ -1,27 +1,105 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Dashboard</h1>
-<p>Welcome to the Cafe Management System</p>
+<style>
+    /* Styling for Quick Menu */
+
+    .quick-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* จัดให้อยู่กลางในแนวตั้ง */
+    align-items: center;      /* จัดให้อยู่กลางในแนวนอน */
+    height: 100%;             /* ความสูงของคอนเทนเนอร์ */
+}
+    .quick-menu h2 {
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .quick-menu .btn {
+    background-color: #6D8E63;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    width: 97%;
+}
+
+    .quick-menu .btn:hover {
+        background-color: #5A7A4B;
+    }
+
+    /* Styling for Quick Stats */
+    .quick-stats {
+        margin: 20px 0;
+    }
+    .quick-stats h2 {
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
 
 
-<div>
+
+    .quick-stats div {
+        margin-bottom: 10px;
+    }
+    .quick-stats h3 {
+        margin: 0;
+        font-weight: bold;
+    }
+    .quick-stats p {
+        margin: 5px 0;
+        font-size: 1.2em;
+    }
+    br {
+        display: block;
+        height: 5px;
+        background-color: #000000;
+        margin: 10px 0;
+    }
+</style>
+
+<dev class=head style="text-align: center;">
+    <h1>Welcome to the Cafe Management System
+        
+    </h1>
+</dev>
+<hr style="border: 2px solid #000000;">
+<div class="quick-menu">
+
+    <h2>Quick Menu</h2>
+    <a href="/admin/inventory" class="btn">จัดการสต็อกสินค้า</a>
+    <a href="/admin/menu" class="btn">จัดการเมนู</a>
+    <a href="/admin/discounts" class="btn">จัดการส่วนลด</a>
+    <a href="/admin/promotions" class="btn">จัดโปรโมชั่น</a>
+    <a href="/admin/members" class="btn">จัดการสมาชิก</a>
+    <a href="/admin/profile" class="btn">จัดการผู้ใช้งานระบบหลังบ้าน</a>
+    <a href="/admin/sales" class="btn">ยอดขาย</a>
+</div>
+
+
+
+<div class="quick-stats">
+    <hr style="border: 2px solid #000000;">
     <h2>Quick Stats</h2>
     <div>
-        <h3>Inventory Items</h3>
-        <p>{{ inventory_count }}</p>
+        <h3>ของในสต็อกสินค้า : {{ inventory_count }}</h3>
     </div>
     <div>
-        <h3>Menu Items</h3>
-        <p>{{ menu_count }}</p>
+        <h3>เมนู : {{ menu_count }}</h3>
     </div>
     <div>
-        <h3>Active Members</h3>
-        <p>{{ member_count }}</p>
+        <h3>มีสามาชิกทั้งหมด : {{ member_count }}</h3>
     </div>
     <div>
-        <h3>Today's Sales</h3>
-        <p>{{ today_sales }}</p>
+        <h3>ยอดขายรวม : {{ total_sales }} บาท</h3>
     </div>
 </div>
+
 {% endblock %}
+

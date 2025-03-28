@@ -10,17 +10,19 @@ users_bp = Blueprint('users', __name__, template_folder='../frontend')
 @admin_login_required
 def view_profile():
     conn = create_connection()
-    user = []
+    users = []
     if conn:
         try:
             c = conn.cursor()
             c.execute("SELECT * FROM users WHERE role != 'admin'")
-            user = c.fetchall()
+            users = c.fetchall()
         except Error as e:
             flash(f'Database error: {str(e)}', 'danger')
         finally:
             conn.close()
-    return render_template('manage_profile.html', user=user)
+    
+    return render_template('manage_profile.html', users=users)
+
 
 # เพิ่มโปรไฟล์ใหม่
 @users_bp.route('/admin/add_profile', methods=['GET', 'POST'])
@@ -31,14 +33,17 @@ def add_profile():
         password = request.form['password']
         role = request.form['role']
         is_active = 1 if request.form.get('is_active') else 0
+        email = request.form['email']
+        phone = request.form['phone']
 
         conn = create_connection()
         if conn:
             try:
                 c = conn.cursor()
-                c.execute("""INSERT INTO users (username, password, role, is_active)
-                              VALUES (?, ?, ?, ?)""",
-                         (username, password, role, is_active))
+                # Insert a new user with email and phone fields
+                c.execute("""INSERT INTO users (username, password, role, is_active, email, phone)
+                              VALUES (?, ?, ?, ?, ?, ?)""",
+                         (username, password, role, is_active, email, phone))
                 conn.commit()
                 flash('Profile added successfully!', 'success')
                 return redirect(url_for('users.view_profile'))
@@ -48,6 +53,7 @@ def add_profile():
                 conn.close()
     
     return render_template('edit_manage_profile.html', user=None)
+
 
 # แก้ไขโปรไฟล์
 @users_bp.route('/admin/edit_profile/<int:user_id>', methods=['GET', 'POST'])
@@ -62,27 +68,32 @@ def edit_profile(user_id):
                 password = request.form['password']
                 role = request.form['role']
                 is_active = 1 if request.form.get('is_active') else 0
+                email = request.form['email']
+                phone = request.form['phone']
 
+                # Update user with email and phone fields
                 c.execute("""UPDATE users SET 
-                            username=?, password=?, role=?, is_active=?
+                            username=?, password=?, role=?, is_active=?, email=?, phone=? 
                             WHERE id=?""",
-                         (username, password, role, is_active, user_id))
+                         (username, password, role, is_active, email, phone, user_id))
                 conn.commit()
                 flash('Profile updated successfully!', 'success')
                 return redirect(url_for('users.view_profile'))
             
+            # Fetch all columns for the specific user by id for editing
             c.execute("SELECT * FROM users WHERE id=?", (user_id,))
-            user = c.fetchone()
+            user = c.fetchone()  # Get the user data
             return render_template('edit_manage_profile.html', user=user)
         except Error as e:
             flash(f'Database error: {str(e)}', 'danger')
         finally:
             conn.close()
-    
+
     return redirect(url_for('users.view_profile'))
 
+
 # ลบโปรไฟล์
-@users_bp.route('/admin/delete_profile/<int:user_id>')
+@users_bp.route('/admin/delete_profile/<int:user_id>', methods=['POST'])
 @admin_login_required
 def delete_profile(user_id):
     conn = create_connection()
