@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Coffee Shop - My Account</title>
+  <link rel="stylesheet" href="Shop-myaccount.css">
+</head>
+<body>
+  <!-- โลโก้ร้าน -->
+  <div class="top-bar">
+    <div class="logo-section">
+      <img src="Logo.jpg" class="logo-icon" />
+      <span class="logo-text">Coffee Shop</span>
+    </div>
+    <div class="top-right">
+      <span>สำหรับผู้จัดการ</span>
+      <span class="username">Username</span>
+      <div class="profile-icon">👤</div>
+    </div>
+  </div>
+
+  <!-- เมนูแยกต่างหาก -->
+  <nav class="menu-bar">
+    <div class="menu-links">
+      <a href="#">HOME</a>
+      <a href="#">MENU</a>
+      <a href="#">Order History</a>
+      <a href="#">List of Ingredients</a>
+    </div>
+    <div class="menu-search">
+      <input type="text" class="search-input" />
+      <span class="search-icon">🔍</span>
+      <span class="bell-icon">🔔</span>
+    </div>
+  </nav>
+
+  <!-- ส่วนเนื้อหา My Account -->
+  <main>
+    <section class="account-container">
+      <h1 class="account-title">My Account</h1>
+      <form class="account-form">
+        <label>ชื่อ-นามสกุล</label>
+        <input type="text" placeholder="กรอกชื่อ-นามสกุล">
+
+        <label>Username</label>
+        <input type="text" placeholder="กรอกชื่อผู้ใช้">
+
+        <label>อีเมล</label>
+        <input type="email" placeholder="example@email.com">
+
+        <label>เบอร์โทรศัพท์</label>
+        <input type="text" placeholder="XXX-XXX-XXXX">
+
+        <label>วัน/เดือน/ปี-เกิด</label>
+        <input type="text" placeholder="XX-XX-XXXX">
+
+        <label>ที่อยู่</label>
+        <textarea rows="2" placeholder="กรอกที่อยู่ของคุณ"></textarea>
+
+        <button type="button" class="edit-btn">แก้ไขข้อมูล</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
